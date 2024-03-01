@@ -1,4 +1,4 @@
-import 'package:bloc_implementation/cubit/counter_cubit.dart';
+import 'package:bloc_implementation/bloc/counter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,14 +7,15 @@ class IncDecPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counterCubit = BlocProvider.of<CounterCubit>(context);
+    final counterBloc = BlocProvider.of<CounterBloc>(context);
     return Scaffold(
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
             onPressed: () {
-              counterCubit.increment();
+              counterBloc.add(CounterIncremented());
+              // counterCubit.increment();
             },
 
             child: const Icon(Icons.add),
@@ -23,7 +24,8 @@ class IncDecPage extends StatelessWidget {
           SizedBox(height: 10), // Added for spacing between buttons
           FloatingActionButton(
             onPressed: () {
-              counterCubit.decrement();
+              counterBloc.add(CounterDecremented());
+              // counterCubit.decrement();
             },
 
             child: const Icon(
