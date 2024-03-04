@@ -11,13 +11,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthLogoutRequested>(_onAuthLogoutRequested);
   }
 
-  @override
-  void onChange(Change<AuthState> change) {
-    // TODO: implement onChange
-    super.onChange(change);
-    print("AuthBloc - $change");
-  }
-
   void _onAuthLoginRequested(
     AuthLoginRequested event,
     Emitter<AuthState> emit,
